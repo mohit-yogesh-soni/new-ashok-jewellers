@@ -25,14 +25,15 @@
   <circle cx="500" cy="500" r="430" fill="none" stroke="url(#goldRing)" stroke-width="2" opacity="0.6"/>
 
   <!-- Monogram: A + j, side by side, gold.
-       Grouped and nudged so the j's dot (top) and tail (bottom) stay well inside the ring. -->
-  <g fill="url(#goldText)" font-family="'Cormorant Garamond', 'Times New Roman', serif">
-    <text x="430" y="600" font-size="420" font-weight="700" text-anchor="middle">A</text>
-    <text x="600" y="615" font-size="300" font-weight="600" font-style="italic" text-anchor="middle">j</text>
+       Pulled toward the centre and sized down so the j's dot (top) and
+       tail (bottom) stay well inside the ring in ANY font / at ANY size. -->
+  <g fill="url(#goldText)" font-family="'Cormorant Garamond', Georgia, 'Times New Roman', serif">
+    <text x="420" y="585" font-size="360" font-weight="700" text-anchor="middle">A</text>
+    <text x="575" y="590" font-size="250" font-weight="600" font-style="italic" text-anchor="middle">j</text>
   </g>
 
   <!-- Small shop name at bottom (subtle) -->
-  <text x="500" y="800" font-size="52" letter-spacing="8"
+  <text x="500" y="780" font-size="50" letter-spacing="8"
         fill="#e4cf9b" text-anchor="middle"
-        font-family="'Jost', Arial, sans-serif" opacity="0.9">KALOL</text>
+        font-family="Georgia, 'Jost', Arial, sans-serif" opacity="0.9">KALOL</text>
 </svg>
