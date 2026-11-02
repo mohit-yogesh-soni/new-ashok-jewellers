@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+  <defs>
+    <!-- Gold gradient for the letters -->
+    <linearGradient id="goldText" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"  stop-color="#e4cf9b"/>
+      <stop offset="50%" stop-color="#c6a15b"/>
+      <stop offset="100%" stop-color="#a67c33"/>
+    </linearGradient>
+    <!-- Dark background for the medallion -->
+    <radialGradient id="bgDark" cx="35%" cy="30%" r="80%">
+      <stop offset="0%"  stop-color="#2d2720"/>
+      <stop offset="100%" stop-color="#1a1712"/>
+    </radialGradient>
+    <!-- Thin gold ring -->
+    <linearGradient id="goldRing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"  stop-color="#e4cf9b"/>
+      <stop offset="100%" stop-color="#a67c33"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Outer dark circle -->
+  <circle cx="500" cy="500" r="470" fill="url(#bgDark)"/>
+  <!-- Decorative gold rings -->
+  <circle cx="500" cy="500" r="470" fill="none" stroke="url(#goldRing)" stroke-width="10"/>
+  <circle cx="500" cy="500" r="430" fill="none" stroke="url(#goldRing)" stroke-width="2" opacity="0.6"/>
+
+  <!-- Monogram: A + j, side by side, gold.
+       Grouped and nudged so the j's dot (top) and tail (bottom) stay well inside the ring. -->
+  <g fill="url(#goldText)" font-family="'Cormorant Garamond', 'Times New Roman', serif">
+    <text x="430" y="600" font-size="420" font-weight="700" text-anchor="middle">A</text>
+    <text x="600" y="615" font-size="300" font-weight="600" font-style="italic" text-anchor="middle">j</text>
+  </g>
+
+  <!-- Small shop name at bottom (subtle) -->
+  <text x="500" y="800" font-size="52" letter-spacing="8"
+        fill="#e4cf9b" text-anchor="middle"
+        font-family="'Jost', Arial, sans-serif" opacity="0.9">KALOL</text>
+</svg>

@@ -88,39 +88,11 @@ a { text-decoration: none; color: inherit; }
     position: relative;
     width: 46px; height: 46px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-family: 'Cormorant Garamond', serif; font-weight: 700;
-    background: radial-gradient(circle at 30% 25%, #2d2720, var(--charcoal));
-    border: 1.5px solid transparent;
-    background-clip: padding-box;
-    box-shadow: 0 0 0 1.5px rgba(198,161,91,0.55), inset 0 1px 6px rgba(0,0,0,0.4);
     overflow: hidden;
-    gap: 1px;
     transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
 }
-/* subtle sheen sweep on hover */
-.brand-mark::before {
-    content: '';
-    position: absolute; top: -60%; left: -60%;
-    width: 60%; height: 220%;
-    background: linear-gradient(120deg, transparent, rgba(228,207,155,0.45), transparent);
-    transform: rotate(18deg) translateX(-40px);
-    transition: transform 0.7s var(--ease);
-}
-.brand:hover .brand-mark { transform: rotate(-4deg); box-shadow: 0 0 0 1.5px var(--gold-light), 0 6px 18px rgba(166,124,51,0.4); }
-.brand:hover .brand-mark::before { transform: rotate(18deg) translateX(90px); }
-
-/* Interlocked A + j monogram */
-.mono-a, .mono-j {
-    background: linear-gradient(145deg, var(--gold-light), var(--gold), var(--gold-deep));
-    -webkit-background-clip: text; background-clip: text;
-    -webkit-text-fill-color: transparent;
-    line-height: 1;
-}
-.mono-a { font-size: 1.5rem; font-weight: 700; }
-.mono-j {
-    font-size: 1.25rem; font-style: italic; font-weight: 600;
-    transform: translateY(2px);
-}
+.brand-mark img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.brand:hover .brand-mark { transform: rotate(-4deg); box-shadow: 0 6px 18px rgba(166,124,51,0.4); }
 .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
 .brand-name { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--cream); }
 .brand-sub { font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-light); }
