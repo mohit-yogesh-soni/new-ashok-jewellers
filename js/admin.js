@@ -17,10 +17,10 @@ import {
 // via a dynamic import, so that if it ever fails to load it does NOT crash
 // login / upload. See getRemoveBackground() below.
 //
-// We self-host the model + wasm files under ./models/ so there is no external
-// download limit and no 403 from the default CDN. This is the absolute URL to
-// that folder (works both locally and on GitHub Pages).
-const BG_PUBLIC_PATH = new URL("../models/", import.meta.url).href;
+// Load the model + wasm files from the unpkg CDN. unpkg serves the full
+// @imgly model data (unlike jsdelivr which blocks it for size), so we don't
+// need to host the large model files in our GitHub repo at all.
+const BG_PUBLIC_PATH = "https://unpkg.com/@imgly/background-removal-data@1.4.5/dist/";
 
 // Lazily load the removeBackground function the first time it's needed.
 let _removeBg = null;
