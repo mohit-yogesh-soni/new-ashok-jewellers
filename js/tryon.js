@@ -1,24 +1,31 @@
 // =========================================================
-// Virtual Try-On: login gate + camera + MediaPipe FaceMesh
-// Overlays jewellery (earrings on ears, necklace below chin)
+// Virtual Try-On: requires login (ANY visitor can create an account
+// and sign in — not just the admin). Camera + MediaPipe FaceMesh overlay.
 // =========================================================
 
 import { auth, db } from "./firebase-config.js";
 import {
-    signInWithEmailAndPassword, signOut, onAuthStateChanged
+    signInWithEmailAndPassword, createUserWithEmailAndPassword,
+    signOut, onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import {
     collection, getDocs, query, where
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-// ---- elements ----
+// ---- login elements ----
 const loginView  = document.getElementById("loginView");
 const tryonView  = document.getElementById("tryonView");
-const loginForm  = document.getElementById("loginForm");
-const loginError = document.getElementById("loginError");
+const authForm   = document.getElementById("authForm");
+const authError  = document.getElementById("authError");
 const userEmail  = document.getElementById("userEmail");
 const logoutBtn  = document.getElementById("logoutBtn");
+const toggleMode = document.getElementById("toggleMode");
+const authTitle  = document.getElementById("authTitle");
+const authSubmit = document.getElementById("authSubmit");
 
+let isSignup = false;   // false = sign in, true = create account
+
+// ---- try-on elements ----
 const cam     = document.getElementById("cam");
 const overlay = document.getElementById("overlay");
 const camHint = document.getElementById("camHint");
@@ -40,7 +47,7 @@ let faceMesh = null;
 let camStarted = false;
 
 // =========================================================
-// AUTH gate
+// AUTH gate — any logged-in user can use the try-on
 // =========================================================
 onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -54,24 +61,54 @@ onAuthStateChanged(auth, (user) => {
     }
 });
 
-loginForm.addEventListener("submit", async (e) => {
+// Toggle between "Sign In" and "Create account"
+toggleMode.addEventListener("click", (e) => {
     e.preventDefault();
-    loginError.textContent = "";
+    isSignup = !isSignup;
+    authTitle.textContent  = isSignup ? "Create Account" : "Sign In to Try";
+    authSubmit.textContent = isSignup ? "Create Account" : "Sign In";
+    toggleMode.textContent = isSignup ? "Already have an account? Sign in" : "New here? Create an account";
+    authError.textContent  = "";
+});
+
+authForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    authError.textContent = "";
+    const email = document.getElementById("email").value.trim();
+    const pass  = document.getElementById("password").value;
     try {
-        await signInWithEmailAndPassword(
-            auth,
-            document.getElementById("email").value.trim(),
-            document.getElementById("password").value
-        );
+        if (isSignup) {
+            await createUserWithEmailAndPassword(auth, email, pass);
+        } else {
+            await signInWithEmailAndPassword(auth, email, pass);
+        }
     } catch (err) {
-        loginError.textContent = "Login failed. Check email / password.";
+        authError.textContent = humanError(err.code) || "Something went wrong.";
         console.error(err);
     }
 });
+
 logoutBtn.addEventListener("click", () => signOut(auth));
 
+function humanError(code) {
+    switch (code) {
+        case "auth/invalid-credential":
+        case "auth/wrong-password":
+        case "auth/user-not-found":
+            return "Wrong email or password.";
+        case "auth/email-already-in-use":
+            return "This email already has an account. Please sign in.";
+        case "auth/weak-password":
+            return "Password should be at least 6 characters.";
+        case "auth/invalid-email":
+            return "Please enter a valid email.";
+        default:
+            return null;
+    }
+}
+
 // =========================================================
-// Start camera + load jewellery once logged in
+// Start camera + load jewellery
 // =========================================================
 async function startEverything() {
     loadItems(currentType);

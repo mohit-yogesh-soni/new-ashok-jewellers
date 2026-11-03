@@ -21,23 +21,24 @@
             <p>New Ashok Jewellers</p>
         </div>
 
-        <!-- ============ LOGIN GATE ============ -->
+        <!-- ============ LOGIN / SIGN-UP GATE ============ -->
         <section id="loginView" class="admin-card">
-            <h2>Sign In to Try</h2>
-            <p class="admin-hint">Please sign in to use the virtual try-on.</p>
-            <form id="loginForm">
+            <h2 id="authTitle">Sign In to Try</h2>
+            <p class="admin-hint">Sign in (or create a free account) to use the virtual try-on.</p>
+            <form id="authForm">
                 <label>Email
                     <input type="email" id="email" required placeholder="you@example.com" autocomplete="username" />
                 </label>
                 <label>Password
-                    <input type="password" id="password" required placeholder="Your password" autocomplete="current-password" />
+                    <input type="password" id="password" required placeholder="At least 6 characters" autocomplete="current-password" />
                 </label>
-                <button type="submit" class="btn btn-gold admin-btn">Sign In</button>
-                <p id="loginError" class="admin-error"></p>
+                <button type="submit" id="authSubmit" class="btn btn-gold admin-btn">Sign In</button>
+                <p id="authError" class="admin-error"></p>
+                <a href="#" id="toggleMode" class="admin-link" style="text-align:center;display:block;">New here? Create an account</a>
             </form>
         </section>
 
-        <!-- ============ TRY-ON VIEW (hidden until logged in) ============ -->
+        <!-- ============ TRY-ON VIEW (shown after login) ============ -->
         <section id="tryonView" style="display:none;">
             <div class="admin-topbar">
                 <span>Signed in as <strong id="userEmail"></strong></span>
