@@ -110,6 +110,17 @@ a { text-decoration: none; color: inherit; }
 }
 .nav-links a:hover::after { width: 100%; }
 
+/* Highlighted "Try Jewellery" link in the navbar */
+.nav-links a.nav-tryon {
+    background: linear-gradient(135deg, var(--gold-light), var(--gold-deep));
+    color: var(--charcoal);
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-weight: 500;
+}
+.nav-links a.nav-tryon::after { display: none; }
+.nav-links a.nav-tryon:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(166,124,51,0.4); }
+
 .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
 .nav-toggle span { width: 26px; height: 2px; background: var(--cream); transition: all 0.3s var(--ease); }
 

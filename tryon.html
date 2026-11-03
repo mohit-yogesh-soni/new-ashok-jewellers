@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Try Jewellery · New Ashok Jewellers</title>
+
+    <link rel="icon" type="image/svg+xml" href="logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+    <link rel="stylesheet" href="css/tryon.css" />
+</head>
+<body class="admin-body">
+
+    <div class="admin-shell tryon-shell">
+        <div class="admin-logo">
+            <img src="logo.svg" alt="New Ashok Jewellers" />
+            <h1>Virtual Try-On</h1>
+            <p>New Ashok Jewellers</p>
+        </div>
+
+        <!-- ============ LOGIN GATE ============ -->
+        <section id="loginView" class="admin-card">
+            <h2>Sign In to Try</h2>
+            <p class="admin-hint">Please sign in to use the virtual try-on.</p>
+            <form id="loginForm">
+                <label>Email
+                    <input type="email" id="email" required placeholder="you@example.com" autocomplete="username" />
+                </label>
+                <label>Password
+                    <input type="password" id="password" required placeholder="Your password" autocomplete="current-password" />
+                </label>
+                <button type="submit" class="btn btn-gold admin-btn">Sign In</button>
+                <p id="loginError" class="admin-error"></p>
+            </form>
+        </section>
+
+        <!-- ============ TRY-ON VIEW (hidden until logged in) ============ -->
+        <section id="tryonView" style="display:none;">
+            <div class="admin-topbar">
+                <span>Signed in as <strong id="userEmail"></strong></span>
+                <button id="logoutBtn" class="admin-link">Logout</button>
+            </div>
+
+            <!-- Camera stage -->
+            <div class="stage">
+                <video id="cam" autoplay playsinline muted></video>
+                <canvas id="overlay"></canvas>
+                <p id="camHint" class="cam-hint">Allow camera access to begin…</p>
+            </div>
+
+            <!-- Fine-tune sliders -->
+            <div class="adjust">
+                <label>Size <input type="range" id="adjSize" min="0.5" max="2" step="0.05" value="1" /></label>
+                <label>Up / Down <input type="range" id="adjY" min="-80" max="80" step="1" value="0" /></label>
+                <label id="spreadWrap">Spread <input type="range" id="adjX" min="-60" max="60" step="1" value="0" /></label>
+                <label>Rotate <input type="range" id="adjRot" min="-180" max="180" step="1" value="0" /></label>
+            </div>
+
+            <!-- Jewellery picker -->
+            <div class="picker">
+                <div class="picker-tabs">
+                    <button class="picker-tab active" data-type="earring">Earrings</button>
+                    <button class="picker-tab" data-type="necklace">Necklace</button>
+                </div>
+                <div id="itemRow" class="item-row">
+                    <p class="admin-hint">Loading jewellery…</p>
+                </div>
+            </div>
+        </section>
+
+        <a href="index.html" class="admin-back">← Back to website</a>
+    </div>
+
+    <script type="module" src="js/tryon.js"></script>
+</body>
+</html>

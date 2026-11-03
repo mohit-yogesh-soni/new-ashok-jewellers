@@ -1,0 +1,83 @@
+/* =========================================================
+   Admin panel styles — New Ashok Jewellers
+   ========================================================= */
+
+.admin-body {
+    min-height: 100vh;
+    display: flex; align-items: flex-start; justify-content: center;
+    background: radial-gradient(circle at 50% 0%, #2a241c, var(--ink));
+    padding: 40px 18px 80px;
+}
+
+.admin-shell { width: 100%; max-width: 560px; }
+
+.admin-logo { text-align: center; margin-bottom: 28px; }
+.admin-logo img { width: 72px; height: 72px; margin: 0 auto 10px; }
+.admin-logo h1 { font-family: 'Cormorant Garamond', serif; color: var(--cream); font-size: 1.8rem; }
+.admin-logo p { color: var(--gold-light); letter-spacing: 0.25em; text-transform: uppercase; font-size: 0.72rem; }
+
+.admin-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(198,161,91,0.22);
+    border-radius: var(--radius);
+    padding: 34px 30px;
+}
+.admin-card h2 { font-family: 'Cormorant Garamond', serif; color: var(--cream); font-size: 1.6rem; margin-bottom: 6px; }
+.admin-hint { color: rgba(248,244,236,0.55); font-size: 0.9rem; margin-bottom: 20px; }
+
+.admin-card form { display: flex; flex-direction: column; gap: 18px; }
+.admin-card label { display: flex; flex-direction: column; gap: 7px; color: var(--cream); font-size: 0.9rem; }
+.admin-card input[type="email"],
+.admin-card input[type="password"],
+.admin-card input[type="text"],
+.admin-card select,
+.admin-card input[type="file"] {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(198,161,91,0.3);
+    border-radius: 8px;
+    padding: 12px 14px;
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.95rem;
+}
+.admin-card input:focus, .admin-card select:focus { outline: none; border-color: var(--gold-light); }
+
+.admin-btn { margin-top: 6px; border: none; width: 100%; text-align: center; }
+
+.admin-check { flex-direction: row !important; align-items: center; gap: 10px !important; font-size: 0.88rem; color: rgba(248,244,236,0.8); }
+.admin-check input { width: 18px; height: 18px; }
+
+.admin-error { color: #ff8a80; font-size: 0.88rem; min-height: 1em; }
+.admin-status { color: var(--gold-light); font-size: 0.9rem; min-height: 1em; }
+
+.admin-topbar {
+    display: flex; justify-content: space-between; align-items: center;
+    color: rgba(248,244,236,0.7); font-size: 0.85rem;
+    padding-bottom: 18px; margin-bottom: 18px;
+    border-bottom: 1px solid rgba(198,161,91,0.18);
+}
+.admin-topbar strong { color: var(--gold-light); }
+.admin-link { background: none; border: none; color: #ff8a80; cursor: pointer; font-size: 0.85rem; }
+
+.admin-preview { display: flex; gap: 12px; flex-wrap: wrap; }
+.admin-preview img {
+    width: 110px; height: 110px; object-fit: contain;
+    border-radius: 8px; border: 1px solid rgba(198,161,91,0.25);
+    background: rgba(0,0,0,0.25);
+}
+
+.admin-items { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 14px; }
+.admin-item {
+    border: 1px solid rgba(198,161,91,0.2); border-radius: 10px;
+    padding: 10px; text-align: center; position: relative;
+    background: rgba(0,0,0,0.25);
+}
+.admin-item img { width: 100%; height: 100px; object-fit: contain; }
+.admin-item span { display: block; color: rgba(248,244,236,0.75); font-size: 0.76rem; margin-top: 6px; }
+.admin-item .del {
+    position: absolute; top: 6px; right: 6px;
+    background: rgba(0,0,0,0.6); border: none; color: #ff8a80;
+    width: 24px; height: 24px; border-radius: 50%; cursor: pointer; font-size: 0.9rem;
+}
+
+.admin-back { display: block; text-align: center; margin-top: 24px; color: var(--gold-light); font-size: 0.9rem; }

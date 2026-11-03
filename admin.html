@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin · New Ashok Jewellers</title>
+
+    <link rel="icon" type="image/svg+xml" href="logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body class="admin-body">
+
+    <div class="admin-shell">
+        <div class="admin-logo">
+            <img src="logo.svg" alt="New Ashok Jewellers" />
+            <h1>New Ashok Jewellers</h1>
+            <p>Admin Panel</p>
+        </div>
+
+        <!-- ============ LOGIN VIEW ============ -->
+        <section id="loginView" class="admin-card">
+            <h2>Sign In</h2>
+            <p class="admin-hint">Only the store owner can upload jewellery.</p>
+            <form id="loginForm">
+                <label>Email
+                    <input type="email" id="email" required placeholder="admin@ashok.com" />
+                </label>
+                <label>Password
+                    <input type="password" id="password" required placeholder="Your password" />
+                </label>
+                <button type="submit" class="btn btn-gold admin-btn">Sign In</button>
+                <p id="loginError" class="admin-error"></p>
+            </form>
+        </section>
+
+        <!-- ============ UPLOAD VIEW (hidden until logged in) ============ -->
+        <section id="uploadView" class="admin-card" style="display:none;">
+            <div class="admin-topbar">
+                <span>Signed in as <strong id="userEmail"></strong></span>
+                <button id="logoutBtn" class="admin-link">Logout</button>
+            </div>
+
+            <h2>Add Jewellery</h2>
+
+            <form id="uploadForm">
+                <label>Jewellery Type
+                    <select id="jType" required>
+                        <option value="earring">Earrings</option>
+                        <option value="necklace">Necklace</option>
+                    </select>
+                </label>
+
+                <label>Name (optional)
+                    <input type="text" id="jName" placeholder="e.g. Gold Jhumka" />
+                </label>
+
+                <label>Photo
+                    <input type="file" id="jFile" accept="image/*" required />
+                </label>
+
+                <div id="preview" class="admin-preview"></div>
+
+                <label class="admin-check">
+                    <input type="checkbox" id="removeBg" checked />
+                    Remove background automatically (recommended)
+                </label>
+
+                <button type="submit" class="btn btn-gold admin-btn">Upload Jewellery</button>
+                <p id="uploadStatus" class="admin-status"></p>
+            </form>
+
+            <h2 style="margin-top:40px;">Uploaded Items</h2>
+            <div id="itemsList" class="admin-items">
+                <p class="admin-hint">Loading…</p>
+            </div>
+        </section>
+
+        <a href="index.html" class="admin-back">← Back to website</a>
+    </div>
+
+    <script type="module" src="js/admin.js"></script>
+</body>
+</html>
